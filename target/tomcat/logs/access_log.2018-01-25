@@ -1,0 +1,14 @@
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:09:56:28 +0200] "GET /add-manufacturer HTTP/1.1" 200 317 http-bio-8088-exec-9 198
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:11:53:27 +0200] "GET /edit-manufacturer HTTP/1.1" 200 - http-bio-8088-exec-1 1300
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:11:53:53 +0200] "GET /allM HTTP/1.1" 404 959 http-bio-8088-exec-1 290
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:11:59:36 +0200] "GET /add-manufacturer HTTP/1.1" 200 317 http-bio-8088-exec-6 30
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:11:59:44 +0200] "GET /all HTTP/1.1" 404 949 http-bio-8088-exec-6 40
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:19:20:15 +0200] "GET /favicon.ico HTTP/1.1" 404 973 http-bio-8088-exec-1 32
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:19:20:23 +0200] "GET /example HTTP/1.1" 200 29 http-bio-8088-exec-2 16
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:19:31:44 +0200] "GET /add-manufacturer HTTP/1.1" 200 317 http-bio-8088-exec-4 749
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:19:31:55 +0200] "POST /add-manufacturer HTTP/1.1" 500 2775 http-bio-8088-exec-5 187
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:19:42:03 +0200] "GET /add-manufacturer HTTP/1.1" 200 317 http-bio-8088-exec-1 780
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:19:42:12 +0200] "POST /add-manufacturer HTTP/1.1" 500 2775 http-bio-8088-exec-2 62
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:22:36:16 +0200] "GET /add-manufacturer HTTP/1.1" 200 317 http-bio-8088-exec-3 16
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:22:36:22 +0200] "POST /add-manufacturer HTTP/1.1" 500 2775 http-bio-8088-exec-4 15
+0:0:0:0:0:0:0:1 - - [25/Jan/2018:23:06:52 +0200] "GET /list-manufacturers HTTP/1.1" 404 987 http-bio-8088-exec-5 0
