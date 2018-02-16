@@ -1,8 +1,13 @@
 package com.annotationservlet.servlet;
 
+
 import com.annotationservlet.App;
+import com.annotationservlet.App2;
 import com.annotationservlet.entity.Manufacturer;
+import com.annotationservlet.entity.Products;
 import com.annotationservlet.storage.ManufacturerStorage;
+import com.annotationservlet.storage.ProductStorage;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -12,20 +17,15 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
-@WebServlet("/allM")
-public class ListManufacturers extends HttpServlet  {
-     private ManufacturerStorage manufacturerStorage = App.getInstance().getStorage();
+@WebServlet("/allP")
+public class ListProducts extends HttpServlet {
+    private ProductStorage productStorage = App2.getInstance().getStorage();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Manufacturer> manufacturers = null;
-        try {
-            manufacturers = manufacturerStorage.listAllManufacturer();
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-        req.setAttribute("manufacturer", manufacturers);
-        req.getRequestDispatcher("/jsp/list-manufacturers.jsp").forward(req, resp);
+        List<Products> products = productStorage.listAllProducts();
+
+        req.setAttribute("product", products);
+        req.getRequestDispatcher("/jsp/list-products.jsp").forward(req, resp);
     }
 }
-

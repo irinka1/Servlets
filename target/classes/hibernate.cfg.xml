@@ -10,7 +10,7 @@
 		<property name="hibernate.connection.url">jdbc:mysql://localhost/http_servlets</property>
 		<property name="hibernate.connection.username">root</property>
 		<property name="hibernate.connection.password">Bhbirf29</property>
-		<property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
 
 		<property name="hibernate.jdbc.batch_size">20</property>
 
@@ -20,8 +20,6 @@
 
 		<!-- Автоматичне створення і оновлення структури БД -->
 		<property name="hibernate.hbm2ddl.auto">update</property>
-
-		<mapping resource="Manufacturer.hbm.xml"/>
 
 		<!-- Маппінг класів-->
 		<mapping class="com.annotationservlet.entity.Manufacturer"/>

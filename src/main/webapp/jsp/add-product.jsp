@@ -11,11 +11,11 @@
 
 <form action="/add-product" method="POST">
     <h3>Product's NAME</h3>
-    <input type="text" name="ProductName"/>
+    <input type="text" name="productName"/>
 
-    <input type="text" name="ProductPrice"/>
+    <input type="text" name="productPrice"/>
 
     <input type="submit" value="Add Product"/>
 </form>
 
-<a href="/all">Product's List</a>
+<a href="/allP">Product's List</a>

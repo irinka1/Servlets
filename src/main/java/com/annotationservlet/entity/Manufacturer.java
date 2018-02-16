@@ -13,13 +13,13 @@ public class Manufacturer {
     @Id
     @GeneratedValue(generator = "uuid2")
     @GenericGenerator(name = "uuid2", strategy = "uuid2")
-    @Column(columnDefinition = "BINARY(16)")
+    @Column(columnDefinition = "BINARY(16)", insertable = false, updatable = false)
     private UUID id;
 
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "manufacturer", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "manufacturer", fetch = FetchType.LAZY)
     private Set<Products> products;
 
     public Set<Products> getProducts() {
@@ -44,6 +44,16 @@ public class Manufacturer {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Manufacturer withId(UUID id){
+        this.id = id;
+        return this;
+    }
+
+    public Manufacturer withName(String name){
+        this.name = name;
+        return this;
     }
 
 

@@ -29,9 +29,9 @@ public class AddProductServlet extends HttpServlet {
                 System.out.println(paramName + "=" + req.getParameter(paramName));
             }
 
-            String ProductName = req.getParameter("ProductName").toString();
+            String ProductName = req.getParameter("productName").toString();
 
-            BigDecimal ProductPrice = new BigDecimal(req.getParameter("ProductPrice"));
+            BigDecimal ProductPrice = new BigDecimal(req.getParameter("productPrice"));
 
             Products product = new Products();
             product.setName(ProductName);

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.UUID;
 
 @WebServlet("/delete-manufacturer")
@@ -21,11 +22,18 @@ public class DeleteManufacturerServlet  extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String manufacturerId = req.getParameter("manufacturerId");
 
-        System.out.println("Manufacturer ID <" + manufacturerId + ">");
+        Manufacturer manufacturer = null;
+        try {
+            manufacturer = manufacturerStorage.get(UUID.fromString(manufacturerId));
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        try {
+            manufacturerStorage.delete(manufacturer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
-        Manufacturer manufacturer = manufacturerStorage.get(UUID.fromString(manufacturerId));
-        manufacturerStorage.delete(manufacturer);
-
-        resp.sendRedirect("/all");
+        resp.sendRedirect("/allM");
     }
 }

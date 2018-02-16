@@ -44,7 +44,7 @@ public class HibernateProductsStorage implements ProductStorage {
 
     public List<Products> listAllProducts() {
         Session session = sessionFactory.openSession();
-        List<Products> products = session.createQuery("from product").list();
+        List<Products> products = session.createQuery("from Products").list();
         session.close();
         return products;
     }

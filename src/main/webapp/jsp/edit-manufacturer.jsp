@@ -1,4 +1,3 @@
-<%@ page import="com.annotationservlet.entity.Cat" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" %>
 
@@ -14,4 +13,4 @@
      <input type="submit" value="Save Manufacturer"/>
 </form>
 
-<a href="/all">Manufacturer's List</a>
+<a href="/allM">Manufacturer List</a>

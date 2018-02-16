@@ -11,4 +11,4 @@
     <input type="submit" value="Add manufacturer"/>
 </form>
 
-<a href="/all">Manufacturer List</a>
+<a href="/allM">Manufacturer List</a>

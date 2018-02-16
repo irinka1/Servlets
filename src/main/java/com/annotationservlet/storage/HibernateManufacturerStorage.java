@@ -15,11 +15,7 @@ public class HibernateManufacturerStorage implements ManufacturerStorage {
 
 
     public HibernateManufacturerStorage() {
-        sessionFactory = new Configuration()
-                .addAnnotatedClass(com.annotationservlet.entity.Manufacturer.class)
-                .addResource("Manufacturer.hbm.xml")
-                 .configure()
-                .buildSessionFactory();
+        sessionFactory = new Configuration().configure().buildSessionFactory();
 
     }
 
@@ -50,7 +46,7 @@ public class HibernateManufacturerStorage implements ManufacturerStorage {
 
     public List<Manufacturer> listAllManufacturer() {
         Session session = sessionFactory.openSession();
-        List<Manufacturer> manufacturers = session.createQuery("from manufacturer").list();
+        List<Manufacturer> manufacturers =  (List<Manufacturer>) session.createQuery("from Manufacturer").list();
         session.close();
         return manufacturers;
     }
@@ -65,20 +61,6 @@ public class HibernateManufacturerStorage implements ManufacturerStorage {
     }
 
     public static void main(String[] args) {
-        String uuidStr = "1548567891234567";
-        HibernateManufacturerStorage hibernateManufacturerStorage = new HibernateManufacturerStorage();
-        Map<UUID, Manufacturer> manufacturers = new HashMap<UUID, Manufacturer>();
-        List<Manufacturer> result = new ArrayList<Manufacturer>();
 
-        /*public List<Manufacturer> listAllManufacturers() {
-            List<Manufacturer> result = new ArrayList<Manufacturer>();
-            for(Manufacturer manufacturer : manufacturers.values()) {
-                result.add(manufacturer);
-            }
-            return result;
-        }*/
-
-        Manufacturer manufacturer =  hibernateManufacturerStorage.get(UUID.fromString(uuidStr));
-        System.out.println(manufacturer);
     }
 }

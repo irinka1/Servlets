@@ -8,30 +8,52 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.SQLException;
 import java.util.UUID;
+
 
 @WebServlet("/edit-manufacturer")
 public class ManufacturerEdit extends HttpServlet {
 
     private ManufacturerStorage manufacturerStorage = App.getInstance().getStorage();
 
-    @Override
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        //long manufacturerId = Long.parseLong(req.getParameter("manufacturerId"));
-        String manufacturerId = req.getParameter("manufacturerId");
-        Manufacturer manufacturer = manufacturerStorage.get(UUID.fromString(manufacturerId));
+   protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+       String manufacturerId = req.getParameter("manufacturerId");
 
-       // Manufacturer manufacturer = manufacturerStorage.get(manufacturerId);
+       Manufacturer manufacturer = null;
+       try {
+           manufacturer = manufacturerStorage.get(UUID.fromString(manufacturerId));
+       } catch (SQLException e) {
+           e.printStackTrace();
+       }
 
+       req.setAttribute("manufacturerName", manufacturer.getName());
+       req.setAttribute("manufacturerId", manufacturer.getId());
 
-        req.setAttribute("manufacturerName", manufacturer.getName());
-        req.setAttribute("manufacturerId", manufacturer.getId());
+       req.getRequestDispatcher("/jsp/edit-manufacturer.jsp").forward(req, resp);
+   }
 
-        req.getRequestDispatcher("/jsp/edit-manufacturer.jsp").forward(req, resp);
-    }
-
-    @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("WE ARE REALLY CLOSE!");
+        resp.setContentType("text/html");
+        PrintWriter out=resp.getWriter();
+
+        UUID manufacturerId = UUID.fromString(req.getParameter("manufacturerId"));
+        String manufacturerName = req.getParameter("manufacturerName");
+
+
+        Manufacturer manufacturer = new Manufacturer();
+        manufacturer.setId(manufacturerId);
+        manufacturer.setName(manufacturerName);
+        try {
+            manufacturerStorage.update(manufacturer);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        resp.sendRedirect("/allM");
+
+        out.close();
     }
+
 }

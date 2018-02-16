@@ -23,8 +23,8 @@ import java.util.UUID;
         @Column(name = "PRICE")
         private BigDecimal price;
 
-        @ManyToOne
-        @JoinColumn(name = "manufacturer_id", referencedColumnName = "ID")
+    @ManyToOne(fetch = FetchType.LAZY,optional=true)
+    @JoinColumn(name = "mId")
         private Manufacturer manufacturer;
 
 
